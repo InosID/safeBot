@@ -33,7 +33,7 @@ const spinnies = new Spinnies({
 })
 const moment = require("moment")
 const { self } = require("../config.json")
-const { english, indonesia } = require("./language")
+const mess = require('./mess.json')
 
 // mongo db connect
 const _ = require('lodash')
@@ -259,7 +259,7 @@ async function connect() {
   conn.ws.on("CB:call", async (json) => {
     if (json.content[0].tag == "offer") {
       conn.sendMessage(json.content[0].attrs["call-creator"], {
-      text: `Your number is blocked for calling bots, contact the owner to unblock.`
+      text: mess.private.blockCall
     })
     await require("delay")(8000)
       await conn.updateBlockStatus(json.content[0].attrs["call-creator"], "block")
@@ -271,4 +271,48 @@ async function connect() {
       if (store && store.contacts) store.contacts[jid] = { jid, name: kontak.notify }
     }
   })
+  conn.ev.on("groups.update", async (json) => {
+    const res = json[0]
+    if (res.announce == true) {
+      conn.sendMessage(res.id, {
+	text: mess.group.change.groupClose,
+      })
+    } else if (res.announce == false) {
+      conn.sendMessage(res.id, {
+	text: mess.group.change.groupOpen,
+      })
+    } else if (res.restrict == true) {
+      conn.sendMessage(res.id, {
+	text: mess.group.change.groupInfoRestr,
+      })
+    } else if (res.restrict == false) {
+      conn.sendMessage(res.id, {
+	text: mess.group.change.groupInfoOpen,
+      })
+    } else {
+      conn.sendMessage(res.id, {
+	text: mess.group.change.groupSubject.replace('{subject}', res.subject),
+      })
+    }
+  })
+  conn.ev.on("messages.upsert", async (m) => {
+    const msg = m.messages[0]
+    if (msg.key.id.startsWith("BAE5") && msg.key.id.length === 16) return
+    const type = msg.message ? Object.keys(msg.message)[0] : ""
+    // let dataCek = db.cekDatabase("antidelete", "id", msg.key.remoteJid)
+    // if (dataCek) conn.addMessage(msg, type)
+    if (msg && type == "protocolMessage") conn.ev.emit("message.delete", msg.message.protocolMessage.key)
+    handler(m, conn, attribute)
+  })
 }
+
+connect()
+
+if (config.server)
+  require("http")
+    .createServer((__, res) => res.end("Server Running!"))
+    .listen(8080)
+
+process.on("uncaughtException", function (err) {
+  console.error(err);
+})
