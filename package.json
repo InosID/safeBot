@@ -19,6 +19,7 @@
   "dependencies": {
     "@adiwajshing/baileys": "github:amiruldev20/Baileys",
     "@adiwajshing/keyed-db": "^0.2.4",
+    "mongoose": "^6.2.1",
     "spinnies": "^0.5.1"
   },
   "bugs": {
