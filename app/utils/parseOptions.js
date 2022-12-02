@@ -1,8 +1,8 @@
 function or() {
-	for (let arg of arguments) {
-		if (arg) return arg;
-	}
-	return arguments[arguments.length - 1];
+  for (let arg of arguments) {
+    if (arg) return arg
+  }
+  return arguments[arguments.length - 1]
 }
 
 module.exports = function parseOptions(optionsArgs = {}, args = {}) {
