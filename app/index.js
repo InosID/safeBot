@@ -2,7 +2,7 @@ console.log("Starting...")
 let { spawn } = require("child_process")
 let path = require("path")
 let fs = require("fs")
-let package = require("./package.json")
+let package = require("../package.json")
  
 var isRunning = false
 /**
