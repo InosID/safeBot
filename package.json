@@ -19,6 +19,7 @@
   "dependencies": {
     "@adiwajshing/baileys": "github:amiruldev20/Baileys",
     "@adiwajshing/keyed-db": "^0.2.4",
+    "axios": "^0.26.1",
     "chalk": "^4.1.2",
     "delay": "^5.0.0",
     "lowdb": "^2.1.0",
