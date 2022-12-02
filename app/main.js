@@ -32,7 +32,7 @@ const spinnies = new Spinnies({
   }
 })
 const moment = require("moment")
-const { self } = require("../config.json")
+const { self, language } = require("../config.json")
 
 // mongo db connect
 const _ = require('lodash')
@@ -216,4 +216,52 @@ async function connect() {
       console.log(`Error : ${e}`);
     }
   }
+  store.bind(conn.ev)
+  conn.ev.on("creds.update", saveCreds)
+  conn.ev.on("connection.update", async (up) => {
+    const { lastDisconnect, connection } = up
+    if (connection) spinnies.add("spinner-2", { text: "Connecting to the WhatsApp bot...", color: "cyan" });
+    if (connection == "connecting") spinnies.add("spinner-2", { text: "Connecting to the WhatsApp bot...", color: "cyan" })
+      if (connection) {
+	if (connection != "connecting")
+	spinnies.update("spinner-2", { text: "Connection: " + connection, color: "yellow" })
+      }
+      if (connection == "open") spinnies.succeed("spinner-2", { text: "Successfully connected to whatsapp", color: "green" })
+      if (connection === "close") {
+      let reason = new Boom(lastDisconnect.error).output.statusCode
+      if (reason === DisconnectReason.badSession) {
+        console.log(`Bad Session File, Please Delete ${session} and Scan Again`)
+        conn.logout()
+      } else if (reason === DisconnectReason.connectionClosed) {
+        console.log("Connection closed, reconnecting....")
+        connect()
+      } else if (reason === DisconnectReason.connectionLost) {
+        console.log("Connection Lost from Server, reconnecting...")
+        connect()
+      } else if (reason === DisconnectReason.connectionReplaced) {
+        console.log("Connection Replaced, Another New Session Opened, Please Close Current Session First")
+        conn.logout()
+      } else if (reason === DisconnectReason.loggedOut) {
+        console.log(`Device Logged Out, Please Delete ${session} and Scan Again.`)
+        conn.logout()
+      } else if (reason === DisconnectReason.restartRequired) {
+        console.log("Restart Required, Restarting...")
+        connect()
+      } else if (reason === DisconnectReason.timedOut) {
+        console.log("Connection TimedOut, Reconnecting...")
+        connect()
+      } else {
+        conn.end(`Unknown DisconnectReason: ${reason}|${lastDisconnect.error}`)
+      }
+    }
+  })
+  conn.ws.on("CB:call", async (json) => {
+    if (json.content[0].tag == "offer") {
+      conn.sendMessage(json.content[0].attrs["call-creator"], {
+      text: mess.blockCall
+    })
+    await require("delay")(8000)
+      await conn.updateBlockStatus(json.content[0].attrs["call-creator"], "block");
+    }
+  })
 }
