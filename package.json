@@ -11,10 +11,16 @@
     "url": "git+https://github.com/InosID/safeBot.git"
   },
   "keywords": [
-    "safebot"
+    "safebot",
+    "whatsapp-bot"
   ],
   "author": "moo-d",
   "license": "ISC",
+  "dependencies": {
+    "@adiwajshing/baileys": "github:amiruldev20/Baileys",
+    "@adiwajshing/keyed-db": "^0.2.4",
+    "spinnies": "^0.5.1"
+  },
   "bugs": {
     "url": "https://github.com/InosID/safeBot/issues"
   },
