@@ -20,7 +20,10 @@
     "@adiwajshing/baileys": "github:amiruldev20/Baileys",
     "@adiwajshing/keyed-db": "^0.2.4",
     "chalk": "^4.1.2",
+    "lowdb": "^2.1.0",
+    "moment-timezone": "^0.5.32",
     "mongoose": "^6.2.1",
+    "node-cron": "^3.0.0",
     "spinnies": "^0.5.1"
   },
   "bugs": {
