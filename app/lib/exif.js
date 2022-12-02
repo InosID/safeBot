@@ -56,3 +56,5 @@ class Exif {
     })
   }
 }
+
+module.exports = Exif
