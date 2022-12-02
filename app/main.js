@@ -32,7 +32,8 @@ const spinnies = new Spinnies({
   }
 })
 const moment = require("moment")
-const { self, language } = require("../config.json")
+const { self } = require("../config.json")
+const { english, indonesia } = require("./language")
 
 // mongo db connect
 const _ = require('lodash')
@@ -258,10 +259,16 @@ async function connect() {
   conn.ws.on("CB:call", async (json) => {
     if (json.content[0].tag == "offer") {
       conn.sendMessage(json.content[0].attrs["call-creator"], {
-      text: mess.blockCall
+      text: `Your number is blocked for calling bots, contact the owner to unblock.`
     })
     await require("delay")(8000)
-      await conn.updateBlockStatus(json.content[0].attrs["call-creator"], "block");
+      await conn.updateBlockStatus(json.content[0].attrs["call-creator"], "block")
+    }
+  })
+  conn.ev.on("contacts.update", (m) => {
+    for (let kontak of m) {
+      let jid = decodeJid(kontak.id)
+      if (store && store.contacts) store.contacts[jid] = { jid, name: kontak.notify }
     }
   })
 }
