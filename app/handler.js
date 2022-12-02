@@ -1,1 +1,10 @@
-
+require("./global.js");
+require("./lib/Proto");
+const { getBinaryNodeChild } = require("@adiwajshing/baileys");
+const Baileys = require("@adiwajshing/baileys");
+const { logger } = Baileys.DEFAULT_CONNECTION_CONFIG;
+const { serialize } = require("./lib/serialize");
+const { checkPrefix } = require("./lib/checkprefix");
+const fs = require("fs");
+const { color, getAdmin, isUrl } = require("./lib");
+const cooldown = new Map();
