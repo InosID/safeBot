@@ -160,3 +160,60 @@ function ReadFeature() {
   })
 }
 ReadFeature() // cmd
+
+async function connect() {
+  const { state, saveCreds } = await useMultiFileAuthState('./session')
+  let { version, isLatest } = await fetchLatestBaileysVersion()
+  console.log(color(`Using: ${version}, newer: ${isLatest}`, "yellow"))
+  const conn = Baileys({
+    printQRInTerminal: true,
+    auth: state,
+    logger: log({ level: "silent" }),
+    version,
+    patchMessageBeforeSending: (message) => {
+      const requiresPatch = !!(
+        message.buttonsMessage
+          || message.templateMessage
+          || message.listMessage
+      )
+      if (requiresPatch) {
+        message = {
+          viewOnceMessage: {
+            message: {
+	      messageContextInfo: {
+		deviceListMetadataVersion: 2,
+	        deviceListMetadata: {}
+	      },
+	      ...message,
+	    }
+          }
+        }
+      }
+      return message
+    }
+  })
+  function decodeJid(jid) {
+    if (/:\d+@/gi.test(jid)) {
+      const decode = jidDecode(jid) || {}
+      return ((decode.user && decode.server && decode.user + "@" + decode.server) || jid).trim()
+    } else return jid
+  }
+  async function getBuffer(url, options) {
+    try {
+      options ? options : {};
+      const res = await require("axios") ({
+        method: "get",
+	url,
+	headers: {
+	  DNT: 1,
+	  "Upgrade-Insecure-Request": 1
+	},
+	...options,
+	responseType: "arraybuffer",
+      });
+      return res.data;
+    } catch (e) {
+      console.log(`Error : ${e}`);
+    }
+  }
+}
