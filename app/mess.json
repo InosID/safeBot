@@ -5,7 +5,7 @@
       "groupOpen": "Group has been opened by admin, Now participants can send messages!",
       "groupInfoRestr": "Group info has been restricted, Now only admin can edit group info!",
       "groupInfoOpen": "Group info has been opened, Now participants can edit group info!",
-      "groupSubject": "Group Subject has been changed to {subject}"
+      "groupSubject": "Group Subject has been changed to *{subject}*"
     }
   },
   "private": {
