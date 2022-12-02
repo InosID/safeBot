@@ -33,7 +33,7 @@ const spinnies = new Spinnies({
 })
 const moment = require("moment")
 const { self } = require("../config.json")
-const mess = require('./mess.json')
+const mess = require('./lib/response.json')
 
 // mongo db connect
 const _ = require('lodash')
