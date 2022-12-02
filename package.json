@@ -19,13 +19,16 @@
   "dependencies": {
     "@adiwajshing/baileys": "github:amiruldev20/Baileys",
     "@adiwajshing/keyed-db": "^0.2.4",
+    "awesome-phonenumber": "^2.70.0",
     "axios": "^0.26.1",
     "chalk": "^4.1.2",
     "delay": "^5.0.0",
+    "file-type": "16.5.3",
     "lowdb": "^2.1.0",
     "moment-timezone": "^0.5.32",
     "mongoose": "^6.2.1",
     "node-cron": "^3.0.0",
+    "node-fetch": "^2.0.0",
     "spinnies": "^0.5.1"
   },
   "bugs": {
