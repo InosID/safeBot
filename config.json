@@ -1,0 +1,4 @@
+{
+  "botName": "Safe Bot",
+  "mongoURI": "Your_MongoDB_URI"
+}
