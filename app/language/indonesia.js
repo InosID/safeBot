@@ -17,3 +17,7 @@ exports.onlyBotAdmin = () => {
 exports.onlyPrivate = () => {
   return `Perintah ini hanya dapat digunakan dalam chat pribadi`
 }
+
+exports.helpHi = (botname) => {
+  return `Hai, saya ${botname}. Ini daftar perintah saya`
+}
