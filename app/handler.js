@@ -156,6 +156,22 @@ module.exports = handler = async (m, conn, map) => {
       gcOnly: false 
     }
 
+    if (cmd) {
+      let cmdIn = db.data.cmd[cmd.name]
+      if (typeof cmdIn !== 'object') db.data.cmd[cmd.name] = {}
+      if (cmdIn) {
+        if (!('success' in cmdIn)) cmdIn.success = 0
+        if (!('failed' in cmdIn)) cmdIn.failed = 0
+        if (!('reason' in cmdIn)) cmdIn.reason = ''
+        if (!('lastUse' in cmdIn)) cmdIn.lastUse = 0
+      } else db.data.cmd[cmd.name] = {
+        success: 0,
+        failed: 0,
+        reason: 0,
+        lastUse: 0
+      }
+    }
+
     let users = db.data.users[sender]
     if (typeof users !== 'object') db.data.users[sender] = {}
     if (users) {
