@@ -109,8 +109,6 @@ module.exports = handler = async (m, conn, map) => {
     const isQDocument = type === "extendedTextMessage" && contentQ.includes("documentMessage");
     const isQSticker = type === "extendedTextMessage" && contentQ.includes("stickerMessage");
     const isQLocation = type === "extendedTextMessage" && contentQ.includes("locationMessage");
-    global.gcount = config.limit.gameLimitPremium;
-    global.limitCount = config.limit.limitUser;
     const Media = (media = {}) => {
       list = [];
       if (media.isQAudio) {
