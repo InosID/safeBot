@@ -6,6 +6,7 @@ global.reloadFile = (file, options = {}) => {
   })
 }
 global.config = require("../config.json")
+global.response = require("./lib/response.json")
 
 function nocache(module, cb = () => {}) {
   fs.watchFile(require.resolve(module), async () => {
