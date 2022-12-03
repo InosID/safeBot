@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
+const config = require('../config.json')
 
 class mongoDB {
   constructor(
@@ -9,7 +10,7 @@ class mongoDB {
       useUnifiedTopology: true
     }
   ) {
-    this.url = url
+    this.url = config.mongoURI
     this.data = this._data = this._schema = this._model = {}
     this.db
     this.options = options
