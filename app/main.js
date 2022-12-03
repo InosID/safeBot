@@ -15,6 +15,7 @@ const { Boom } = require("@hapi/boom")
 const { color } = require("./lib/function")
 const handler = require("./handler")
 const cron = require("node-cron")
+const utils = require("./utils")
 const Spinnies = require("spinnies")
 const spinnies = new Spinnies({
   spinner: {
