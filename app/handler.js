@@ -155,5 +155,48 @@ module.exports = handler = async (m, conn, map) => {
       autoRead: false,
       gcOnly: false 
     }
+
+    let users = db.data.users[sender]
+    if (typeof users !== 'object') db.data.users[sender] = {}
+    if (users) {
+      if (!('language' in users)) users.language = 'english' // default
+    } else db.data.users[sender] = {
+      language: 'english'
+    }
+
+    let lang;
+    if (db.data.users[sender].language == 'english') lang = require('./language/english')
+    else if (user.language == 'indonesia') lang = require('./language/indonesia')
+
+    /**
+     * Auto read 
+     */
+    if (db.data.setting.autoRead) await conn.readMessages([msg.key]);
+
+    if (!cmd) return;
+    if (!cooldown.has(from)) {
+      cooldown.set(from, new Map());
+    }
+    const now = Date.now();
+    const timestamps = cooldown.get(from);
+    const cdAmount = (cmd.options.cooldown || 2) * 1000;
+    if (timestamps.has(from)) {
+      const expiration = timestamps.get(from) + cdAmount;
+      if (now < expiration) {
+	if (isGroup) {
+	  let timeLeft = (expiration - now) / 1000;
+	  printSpam(conn, isGroup, sender, groupName);
+	  return await conn.sendMessage(from, {
+	    text: lang.cooldown(timeLeft.toFixed(1)),
+	  }, { quoted: msg });
+	} else if (!isGroup) {
+	  let timeLeft = (expiration - now) / 1000;
+	  printSpam(conn, isGroup, sender);
+	  return await conn.sendMessage(from, {
+	    text: lang.cooldown(timeLeft.toFixed(1)),
+	  }, { quoted: msg });
+	}
+      }
+    }
   } catch {}
 }
