@@ -21,7 +21,8 @@ module.exports = {
 	category[cteg].push(info)
       }
     }
-    let str = lang.helpHi()
+    let botnm = db.data.setting.botName
+    let str = lang.helpHi(botnm)
     const keys = Object.keys(category)
     for (const key of keys) {
       str += `╭─「 *${key.toUpperCase()}* 」\n${category[key]
