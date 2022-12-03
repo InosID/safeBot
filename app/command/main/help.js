@@ -7,6 +7,7 @@ module.exports = {
     const { prefix, command } = map
     const cmds = command.keys()
     let category = []
+    let lang = db.data.users[sender].language
     for (let cmd of cmds) {
       let info = command.get(cmd)
       if (!cmd) continue
