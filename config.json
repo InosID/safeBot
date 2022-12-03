@@ -1,5 +1,6 @@
 {
   "botName": "Safe Bot",
   "mongoURI": "Your_MongoDB_URI",
-  "owner": ["62xxx@s.whatsapp.net"]
+  "owner": ["62xxx@s.whatsapp.net"],
+  "thumbnail": "https://github.com/InosID/safeBot/raw/main/.thumb/thumb.jpeg"
 }
