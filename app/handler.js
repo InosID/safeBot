@@ -125,7 +125,6 @@ module.exports = handler = async (m, conn, map) => {
       }
       return list;
     }
-    require("./res/EmitEvent.js")(msg, conn);
 
     // read command
     const cmdName = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase();
@@ -136,5 +135,12 @@ module.exports = handler = async (m, conn, map) => {
       ) ||
       map.command.get(cmdName) ||
       [...map.command.values()].find((x) => x.alias.find((x) => x.toLowerCase() == cmdName));
+
+    /** 
+     * Mongo DB database
+     */
+    let setting = db.data.setting
+    if (typeof setting !== 'object') db.data.setting = {} 
+    
   } catch {}
 }
