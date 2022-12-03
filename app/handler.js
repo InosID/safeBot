@@ -198,5 +198,82 @@ module.exports = handler = async (m, conn, map) => {
 	}
       }
     }
-  } catch {}
+    setTimeout(() => timestamps.delete(from), cdAmount);
+    let optionsCmd = cmd.options;
+    if (optionsCmd.isSpam) {
+      timestamps.set(from, now);
+    }
+
+    /**
+     * Only Owner 
+     */
+    if (optionsCmd.isOwner && !isOwner) {
+      return msg.reply(lang.onlyOwner())
+    }
+
+    /**
+     * Only Group
+     */
+    if (optionsCmd.isGroup && !isGroup) {
+      return msg.reply(mess.onlyGroup())
+    }
+
+    /**
+     * Only Admin Group .
+     */
+    if (optionsCmd.isAdmin && !isAdmin) {
+      return msg.reply(lang.onlyGroupAdmin())
+    }
+
+    /** 
+     * Only Bot admin 
+     */
+    if (optionsCmd.isBotAdmin && !botAdmin) {
+      return msg.reply(lang.onlyBotAdmin())
+    }
+
+    /**
+     * No query 
+     */
+    if (optionsCmd.query && !q) {
+      capt = "*Command* : " + cmd.name
+      capt += "\n*Sub-command* : " + cmd.alias
+      capt += `\nEx :\n*${cmd.name} ${cmd.use}*`
+      return msg.reply(capt)
+    }
+
+    /**
+     * Private chat 
+     */
+    if (optionsCmd.isPrivate && !isPrivate) {
+      return msg.reply(lang.onlyPrivate())
+    }
+
+    /**
+     * Is Url
+     */
+    if (optionsCmd.isUrl && !isUrl(q ? q : "p")) {
+      return msg.reply('link?')
+    }
+
+    /**
+     * Begin start 
+     */
+    try {
+      await cmd.run(
+	{ msg, conn },
+	{ owner: isOwner, q, map, args, arg, Baileys, prefix, response, chat: m, command: comand, pickRandom, getBuffer, isUrl }
+      );
+    } catch (e) {
+      if (cmd.category != "private") {
+        db.data.cmd[cmd.name].failed += 1
+        db.data.cmd[cmd.name].success -= 1
+        db.data.cmd[cmd.name].lastUse = Date.now()
+      }
+      msg.reply('Error!')
+      conn.sendMessage('6288218292156@s.whatsapp.net', { text: require("util").format(e)});
+    }
+  } catch (e) {
+    console.log(color("Error", "red"), e.stack)
+  }
 }
