@@ -6,8 +6,11 @@ const { logger } = Baileys.DEFAULT_CONNECTION_CONFIG;
 const { serialize } = require("./lib/serialize");
 const { checkPrefix } = require("./lib/checkprefix");
 const fs = require("fs");
-const { color, getAdmin, isUrl } = require("./lib");
+const { color, getAdmin, isUrl } = require("./lib/function");
 const cooldown = new Map();
+const owner = config.owner;
+const thumbnail = config.thumbnail;
+const toMs = require('ms')
 
 function printSpam(conn, isGc, sender, groupName) {
   if (isGc) {
@@ -141,6 +144,16 @@ module.exports = handler = async (m, conn, map) => {
      */
     let setting = db.data.setting
     if (typeof setting !== 'object') db.data.setting = {} 
-    
+    if (setting) {
+      if (!('thumb' in setting)) setting.thumb = thumbnail
+      if (!('info' in setting)) setting.info = ''
+      if (!('autoRead' in setting)) setting.autoRead = false
+      if (!('gcOnly' in setting)) setting.gcOnly = false 
+    } else db.data.setting = {
+      thumb: thumbnail,
+      info: '',
+      autoRead: false,
+      gcOnly: false 
+    }
   } catch {}
 }
