@@ -51,7 +51,7 @@ module.exports = {
   }
 }
 
-async function reSize(image, width, height) => {
+async function reSize(image, width, height) {
   let jimp = require('jimp')
   var read = await jimp.read(image)
   var data = await read.resize(width, height).getBufferAsync(jimp.MIME_JPEG)
