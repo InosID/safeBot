@@ -31,7 +31,8 @@
     "ms": "2.1.3",
     "node-cron": "^3.0.0",
     "node-fetch": "^2.0.0",
-    "spinnies": "^0.5.1"
+    "spinnies": "^0.5.1",
+    "util": "^0.12.4"
   },
   "bugs": {
     "url": "https://github.com/InosID/safeBot/issues"
