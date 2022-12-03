@@ -10,6 +10,7 @@ const { color, getAdmin, isUrl } = require("./lib/function");
 const cooldown = new Map();
 const owner = config.owner;
 const thumbnail = config.thumbnail;
+const gcWA = config.groupWhatsApp;
 const toMs = require('ms')
 
 function printSpam(conn, isGc, sender, groupName) {
@@ -149,11 +150,13 @@ module.exports = handler = async (m, conn, map) => {
       if (!('info' in setting)) setting.info = ''
       if (!('autoRead' in setting)) setting.autoRead = false
       if (!('gcOnly' in setting)) setting.gcOnly = false 
+      if (!('groupWhatsApp' in setting)) setting.groupWhatsApp = gcWA
     } else db.data.setting = {
       thumb: thumbnail,
       info: '',
       autoRead: false,
-      gcOnly: false 
+      gcOnly: false,
+      groupWhatsApp: gcWA
     }
 
     if (cmd) {
