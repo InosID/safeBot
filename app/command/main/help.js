@@ -36,20 +36,18 @@ module.exports = {
 		: ""
 	    }`
 	)
-	.join("\n")}\n╰────\n\n`;
-      }
-      let templateButtons = [
-        { urlButton: { displayText: "WhatsApp Group", url: db.data.setting.groupWhatsApp } }
-      ]
-      let winrate = db.data.users[msg.sender].winrate
-      let templateMessage = {
-        location: { jpegThumbnail: await reSize(db.data.setting.thumb, 300, 175)},
-        caption: str,
-        footer: '',
-        templateButtons: templateButtons
-      }
-      await conn.sendMessage(msg.from, templateMessage)
+	.join("\n")}\n╰────\n\n`
     }
+    let templateButtons = [
+      { urlButton: { displayText: "WhatsApp Group", url: db.data.setting.groupWhatsApp } }
+    ]
+    let templateMessage = {
+      location: { jpegThumbnail: await reSize(db.data.setting.thumb, 300, 175) },
+      caption: str,
+      footer: '',
+      templateButtons: templateButtons
+    }
+    await conn.sendMessage(msg.from, templateMessage)
   }
 }
 
