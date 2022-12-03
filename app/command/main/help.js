@@ -7,7 +7,6 @@ module.exports = {
     const { prefix, command } = map
     const cmds = command.keys()
     let category = []
-    let lang = db.data.users[sender].language
     for (let cmd of cmds) {
       let info = command.get(cmd)
       if (!cmd) continue
@@ -22,8 +21,8 @@ module.exports = {
 	category[cteg].push(info)
       }
     }
-    let botnm = db.data.setting.botName
-    let str = lang.helpHi(botnm)
+    let botname = db.data.setting.botName
+    let str = `Hi, I'm ${botname}. Here is my list of commands`
     const keys = Object.keys(category)
     for (const key of keys) {
       str += `╭─「 *${key.toUpperCase()}* 」\n${category[key]
