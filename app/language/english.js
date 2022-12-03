@@ -17,3 +17,7 @@ exports.onlyBotAdmin = () => {
 exports.onlyPrivate = () => {
   return `This command can only be used in private chat`
 }
+
+exports.helpHi = (botname) => {
+  return `Hi, I'm ${botname}. Here is my list of commands`
+}
