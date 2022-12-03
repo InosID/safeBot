@@ -1,4 +1,4 @@
-module.exports = {
+/*module.exports = {
   name: "language",
   category: "configuration",
   alias: ["lang"],
@@ -20,3 +20,4 @@ module.exports = {
     }
   }
 }
+*/
