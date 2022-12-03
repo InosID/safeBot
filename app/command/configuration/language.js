@@ -3,6 +3,7 @@ module.exports = {
   category: "configuration",
   alias: ["lang"],
   use: "[language]",
+  isGroup: true,
   isAdmin: true,
   async run({ msg, conn }, { args }) {
     let { sender } = msg
