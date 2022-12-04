@@ -32,3 +32,9 @@ exports.featureDesc = (feature) => {
 exports.featureActive = (feature, desc) => {
   return `Berhasil mengaktifkan ${feature}. ${desc}`
 }
+exports.featureDeactive = (feature) => {
+  return `Berhasil menonaktifkan ${feature}`
+}
+exports.isActive = (feature) => {
+  return `${feature} sudah aktif`
+}
