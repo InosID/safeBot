@@ -202,6 +202,7 @@ module.exports = handler = async (m, conn, map) => {
      * Handler
      */
     require("./handler/anti-porn")(msg, conn)
+    printLog(isCmd, sender, msg, body, groupName, isGroup)
 
     if (!cmd) return;
     if (!cooldown.has(from)) {
