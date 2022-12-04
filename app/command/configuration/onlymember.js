@@ -21,9 +21,9 @@ module.exports = {
       break
     default:
       let buttons = [{ 
-	buttonId: `onlymember on`, buttonText: { displayText: 'On'}, type: 1
+	buttonId: `onlymember yes`, buttonText: { displayText: 'Yes'}, type: 1
       }, {
-	buttonId: `onlymember off`, buttonText: { displayText: 'Off'}, type: 1
+	buttonId: `onlymember no`, buttonText: { displayText: 'No'}, type: 1
       }]
       let buttonMessage = {
         text: `*ONLY MEMBER*\n*Current:* ${group.onlymember ? 'On' : 'Off'}`,
