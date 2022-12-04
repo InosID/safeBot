@@ -21,3 +21,14 @@ exports.onlyPrivate = () => {
 exports.helpHi = (botname) => {
   return `Hai, saya ${botname}. Ini daftar perintah saya`
 }
+
+exports.featureDesc = (feature) => {
+  switch(feature) {
+    case 'antinsfw':
+      return `Sekarang 18+ foto dan stiker akan dihapus secara otomatis.`
+    break
+  }
+}
+exports.featureActive = (feature, desc) => {
+  return `Berhasil mengaktifkan ${feature}. ${desc}`
+}
