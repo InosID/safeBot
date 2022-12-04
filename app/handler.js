@@ -176,6 +176,14 @@ module.exports = handler = async (m, conn, map) => {
       }
     }
 
+    let groups = db.data.group[from]
+    if (typeof groups !== 'object') db.data.group[from] = {}
+    if (groups) {
+      if (!('antinsfw' in groups)) groups.antinsfw = false
+    } else db.data.group[from] = {
+      antinsfw: false
+    }
+
     let users = db.data.users[sender]
     if (typeof users !== 'object') db.data.users[sender] = {}
     if (users) {
