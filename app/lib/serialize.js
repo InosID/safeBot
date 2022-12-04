@@ -21,16 +21,16 @@ const { proto, jidDecode, downloadContentFromMessage, getContentType } = require
         2: ["-fs 1M", "-vcodec", "libwebp"],
       }
 
-function downloadMedia(message, pathFile) {
+const downloadMedia = (message, pathFile) =>
   new Promise(async (resolve, reject) => {
-    let type = Object.keys(message)[0]
+    let type = Object.keys(message)[0];
     let mimeMap = {
       imageMessage: "image",
       videoMessage: "video",
       stickerMessage: "sticker",
       documentMessage: "document",
       audioMessage: "audio",
-    }
+    };
     let mes = message;
     if (type == "templateMessage") {
       mes = message.templateMessage.hydratedFourRowTemplate;
@@ -42,15 +42,15 @@ function downloadMedia(message, pathFile) {
     }
     try {
       if (pathFile) {
-	const stream = await downloadContentFromMessage(mes[type], mimeMap[type]);
-	let buffer = Buffer.from([]);
+        const stream = await downloadContentFromMessage(mes[type], mimeMap[type]);
+        let buffer = Buffer.from([]);
 	for await (const chunk of stream) {
 	  buffer = Buffer.concat([buffer, chunk]);
 	}
 	await fs.promises.writeFile(pathFile, buffer);
 	resolve(pathFile);
       } else {
-	const stream = await downloadContentFromMessage(mes[type], mimeMap[type]);
+        const stream = await downloadContentFromMessage(mes[type], mimeMap[type]);
 	let buffer = Buffer.from([]);
 	for await (const chunk of stream) {
 	  buffer = Buffer.concat([buffer, chunk]);
@@ -58,10 +58,9 @@ function downloadMedia(message, pathFile) {
 	resolve(buffer);
       }
     } catch (e) {
-      reject(e)
+      reject(e);
     }
-  })
-}
+});
 async function serialize(msg, conn) {
   conn.decodeJid = (jid) => {
     if (/:\d+@/gi.test(jid)) {
