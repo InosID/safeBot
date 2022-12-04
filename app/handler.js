@@ -201,7 +201,7 @@ module.exports = handler = async (m, conn, map) => {
     /**
      * Handler
      */
-    require("./handler/anti-porn")(msg, conn)
+    require("./handler/detectNSFW")(msg, conn)
     printLog(isCmd, sender, msg, body, groupName, isGroup)
 
     if (!cmd) return;
