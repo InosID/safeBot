@@ -22,7 +22,7 @@ module.exports = {
       }
     }
     let botname = db.data.setting.botName
-    let str = lang.helpHi + '\n'
+    let str = lang.helpHi(botname) + '\n'
     const keys = Object.keys(category)
     for (const key of keys) {
       str += `╭─「 *${key.toUpperCase()}* 」\n${category[key]
