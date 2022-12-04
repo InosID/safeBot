@@ -1,4 +1,4 @@
-let { webp2png } = require('../../lib/webp2')
+let { webp2png } = require('../lib/webp2')
 let tf = require('@tensorflow/tfjs-node')
 let nsfw = require('nsfwjs')
 let axios = require('axios')
