@@ -203,7 +203,7 @@ module.exports = handler = async (m, conn, map) => {
     } else {
       lang = ''
     }
-   
+    
     global.lang = lang
 
     /**
