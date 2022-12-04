@@ -38,3 +38,6 @@ exports.featureDeactive = (feature) => {
 exports.isActive = (feature) => {
   return `${feature} sudah aktif`
 }
+exports.isDeactive = (feature) => {
+  return `${feature} sudah nonaktif`
+}
