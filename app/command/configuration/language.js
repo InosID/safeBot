@@ -20,6 +20,19 @@ module.exports = {
         user.language = 'indonesia'
         msg.reply('Berhasil mengganti ke bahasa Indonesia')
       break
+    default:
+      let buttons = [{ 
+	buttonId: `language english`, buttonText: { displayText: 'English'}, type: 1
+      }, {
+	buttonId: `language indonesia`, buttonText: { displayText: 'Indonesia'}, type: 1
+      }]
+      let buttonMessage = {
+        text: `*Change Language*\n*Current:* ${user.language == 'english' ? 'English' : '' || user.language == 'indonesia' ? 'Indonesia' : ''}`,
+	footer: ' ',
+	buttons: buttons,
+	headerType: 4
+      }
+      conn.sendMessage(msg.from, buttonMessage)
     }
   }
 }
