@@ -198,6 +198,11 @@ module.exports = handler = async (m, conn, map) => {
      */
     if (db.data.setting.autoRead) await conn.readMessages([msg.key]);
 
+    /**
+     * Handler
+     */
+    require("./handler/anti-porn")(msg, conn)
+
     if (!cmd) return;
     if (!cooldown.has(from)) {
       cooldown.set(from, new Map());
