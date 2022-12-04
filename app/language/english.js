@@ -32,3 +32,12 @@ exports.featureDesc = (feature) => {
 exports.featureActive = (feature, desc) => {
   return `Successfully activated ${feature}. ${desc}`
 }
+exports.featureDeactive = (feature) => {
+  return `successfully deactivate ${feature}`
+}
+exports.isActive = (feature) => {
+  return `${feature} is active`
+}
+exports.isDeactive = (feature) => {
+  return `${feature} is nonactive`
+}
