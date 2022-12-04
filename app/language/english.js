@@ -41,3 +41,7 @@ exports.isActive = (feature) => {
 exports.isDeactive = (feature) => {
   return `${feature} is nonactive`
 }
+
+exports.done = () => {
+  return `Done.`
+}
