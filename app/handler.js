@@ -194,7 +194,7 @@ module.exports = handler = async (m, conn, map) => {
 
     let Lang = db.data.users[sender].language 
     let lang 
-    if (lang = 'english') {
+    if (Lang = 'english') {
       lang = require('./language/english')
     } else {
       lang = ''
