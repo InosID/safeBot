@@ -41,3 +41,7 @@ exports.isActive = (feature) => {
 exports.isDeactive = (feature) => {
   return `${feature} sudah nonaktif`
 }
+
+exports.done = () => {
+  return `Selesai`
+}
