@@ -13,7 +13,7 @@ module.exports = {
       db.data.group[msg.from].antinsfw = true
       msg.reply(lang.featureActive('Anti NSFW', lang.featureDesc('antinsfw')))
     } else if (text === 'off') {
-      if (db.data.group[msg.from].antinsfw === false) return msg.reply(msg.isDeactive('Anti NSFW'))
+      if (db.data.group[msg.from].antinsfw === false) return msg.reply(lang.isDeactive('Anti NSFW'))
       db.data.group[msg.from].antinsfw = false
       msg.reply(lang.featureDeactive('Anti NSFW'))
     } else {
