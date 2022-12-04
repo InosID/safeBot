@@ -9,13 +9,13 @@ module.exports = {
   async run({ msg, conn }, { q }) {
     text = q
     if (text === 'on') {
-      if (db.data.group[msg.from].antinsfw === true) return msg.reply('anti nsfw is active')
+      if (db.data.group[msg.from].antinsfw === true) return msg.reply(lang.isActive('Anti NSFW'))
       db.data.group[msg.from].antinsfw = true
-      msg.reply(`Successfully activated anti nsfw. Now 18+ photos and stickers will be automatically removed.`)
+      msg.reply(lang.featureActive('Anti NSFW', lang.featureDesc('antinsfw')))
     } else if (text === 'off') {
-      if (db.data.group[msg.from].antinsfw === false) return msg.reply('anti nsfw is deactivated')
+      if (db.data.group[msg.from].antinsfw === false) return msg.reply(msg.isDeactive('Anti NSFW'))
       db.data.group[msg.from].antinsfw = false
-      msg.reply(`Successfully disable anti nsfw`)
+      msg.reply(lang.featureDeactive('Anti NSFW'))
     } else {
       let buttons = [{ 
 	buttonId: `antinsfw on`, buttonText: { displayText: 'On'}, type: 1
