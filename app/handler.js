@@ -187,12 +187,21 @@ module.exports = handler = async (m, conn, map) => {
     let users = db.data.users[sender]
     if (typeof users !== 'object') db.data.users[sender] = {}
     if (users) {
-      if (!('language' in users)) users.language = require('./language/english') // default
+      if (!('language' in users)) users.language = 'english'
     } else db.data.users[sender] = {
-      language: require('./language/english')
+      language: 'english'
     }
 
-    let lang = db.data.users[sender].language
+    let Lang = db.data.users[sender].language 
+    let lang 
+    if (lang = 'english') {
+      lang = require('./language/english')
+    } else {
+      lang = ''
+    }
+   
+    global.lang = lang
+
     /**
      * Auto read 
      */
