@@ -180,10 +180,10 @@ module.exports = handler = async (m, conn, map) => {
     if (typeof groups !== 'object') db.data.group[from] = {}
     if (groups) {
       if (!('antinsfw' in groups)) groups.antinsfw = false
-      if (!('justparticipant' in groups)) groups.justparticipant = false
+      if (!('onlymember' in groups)) groups.onlymember = false
     } else db.data.group[from] = {
       antinsfw: false,
-      justparticipant: false
+      onlymember: false
     }
 
     let users = db.data.users[sender]
