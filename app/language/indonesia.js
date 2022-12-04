@@ -45,3 +45,10 @@ exports.isDeactive = (feature) => {
 exports.done = () => {
   return `Selesai`
 }
+
+exports.isConfig = (feature) => {
+  return `Anda telah mengubah menjadi ${feature}`
+}
+exports.successConfig = (feature) => {
+  return `Berhasil diubah menjadi ${feature}`
+}
