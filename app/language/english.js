@@ -45,3 +45,10 @@ exports.isDeactive = (feature) => {
 exports.done = () => {
   return `Done.`
 }
+
+exports.isConfig = (feature) => {
+  return `You have changed to ${feature}`
+}
+exports.successConfig = (feature) => {
+  return `Successfully changed to ${feature}`
+}
