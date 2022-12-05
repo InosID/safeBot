@@ -15,7 +15,7 @@ module.exports = {
         msg.reply(lang.successConfig('Only Member'))
       break
       case 'no':
-        if (group.onlymember) return msg.reply(lang.isConfig('All participants'))
+        if (!group.onlymember) return msg.reply(lang.isConfig('All participants'))
         group.onlymember = false
         msg.reply(lang.successConfig('All participants'))
       break
