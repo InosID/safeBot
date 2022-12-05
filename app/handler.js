@@ -190,8 +190,10 @@ module.exports = handler = async (m, conn, map) => {
     if (typeof users !== 'object') db.data.users[sender] = {}
     if (users) {
       if (!('language' in users)) users.language = 'english'
+      if (!('warn' in users)) users.warn = 0
     } else db.data.users[sender] = {
-      language: 'english'
+      language: 'english',
+      warn: 0
     }
 
     let Lang = db.data.users[sender].language 
