@@ -12,15 +12,15 @@ module.exports = {
       case 'yes':
         if (group.onlymember) return msg.reply(lang.isConfig('Only member'))
         group.onlymember = true
-        msg.reply(msg.successConfig('Only Member'))
+        msg.reply(lang.successConfig('Only Member'))
       break
       case 'no':
         if (group.onlymember) return msg.reply(lang.isConfig('All participants'))
         group.onlymember = false
-        msg.reply(msg.successConfig('All participants'))
+        msg.reply(lang.successConfig('All participants'))
       break
     default:
-      let buttons = [{ 
+      let buttons = [{
 	buttonId: `onlymember yes`, buttonText: { displayText: 'Yes'}, type: 1
       }, {
 	buttonId: `onlymember no`, buttonText: { displayText: 'No'}, type: 1
