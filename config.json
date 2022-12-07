@@ -4,7 +4,7 @@
   "owner": ["62xxx@s.whatsapp.net"],
   "thumbnail": "https://github.com/InosID/safeBot/raw/main/.thumb/thumb.jpeg",
   "groupWhatsApp": "Your_WhatsApp_Group",
-  "maxWarn": 5
+  "maxWarn": 5,
   "ignore": {
     "directory": ["main"]
   }
