@@ -10,7 +10,8 @@ module.exports = async (msg, conn) => {
   let isAntiNSFW = isGroup ? db.data.group[from].antinsfw : false 
   let isImage = type === 'imageMessage'
   let isSticker = type === 'stickerMessage' 
-  let isMedia = isImage || isSticker 
+  let isMedia = isImage || isSticker
+  let group = db.data.group[from]
   let warn = db.data.users[sender].warn
   if (isGroup && isAntiNSFW) {
     if (isMedia) {
@@ -28,11 +29,11 @@ module.exports = async (msg, conn) => {
         await conn.sendMessage(msg.from, { delete: msg.key })
         require('delay')(2000) 
         conn.sendMessage(msg.from, { text: `@${msg.sender.split('@')[0]} You are not allowed to post ${typeNSFW} here`, mentions: [msg.sender] })
-        if (warn >= maxwarn) {
-          msg.reply(`You get 1 warning, you still have ${db.data.users[sender].warn - 1} chances, don't send again if you don't want to be kicked`)
-          //disini function kick
-        } else {
-          db.data.users[sender].warn += 1
+        if (group.autokick && !isAdmin) {
+          if (warn >= maxwarn) {
+            msg.reply(`You get 1 warning, you still have ${db.data.users[sender].warn - 1} chances, don't send again if you don't want to be kicked`)
+            await conn.groupParticipantsUpdate(msg.from, [sender], "remove")
+          } else db.data.users[sender].warn += 1
         }
       } else console.log('Neutral')
     }
