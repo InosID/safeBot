@@ -12,7 +12,8 @@ const owner = config.owner;
 const thumbnail = config.thumbnail;
 const botname = config.botName;
 const gcWA = config.groupWhatsApp;
-const toMs = require('ms')
+const maxWarn = config.maxWarn;
+const toMs = require('ms');
 
 function printSpam(conn, isGc, sender, groupName) {
   if (isGc) {
@@ -205,7 +206,8 @@ module.exports = handler = async (m, conn, map) => {
     } else {
       lang = ''
     }
-    
+
+    global.maxwarn = maxWarn
     global.lang = lang
 
     /**
