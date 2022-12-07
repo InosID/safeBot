@@ -217,8 +217,7 @@ module.exports = handler = async (m, conn, map) => {
      * Handler
      */
     memberOnly = db.data.group[from].onlymember
-    if (memberOnly) { 
-      if (isAdmin) return
+    if (memberOnly && !isAdmin) {
       require("./handler/detectNSFW")(msg, conn)
     } else {
       require("./handler/detectNSFW")(msg, conn)
