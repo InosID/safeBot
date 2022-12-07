@@ -28,7 +28,7 @@ module.exports = async (msg, conn) => {
         await conn.sendMessage(msg.from, { delete: msg.key })
         require('delay')(2000) 
         conn.sendMessage(msg.from, { text: `@${msg.sender.split('@')[0]} You are not allowed to post ${typeNSFW} here`, mentions: [msg.sender] })
-        if (warn >= 5) {
+        if (warn >= maxwarn) {
           msg.reply(`You get 1 warning, you still have ${db.data.users[sender].warn - 1} chances, don't send again if you don't want to be kicked`)
           //disini function kick
         } else {
