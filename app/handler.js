@@ -182,9 +182,11 @@ module.exports = handler = async (m, conn, map) => {
     if (groups) {
       if (!('antinsfw' in groups)) groups.antinsfw = false
       if (!('onlymember' in groups)) groups.onlymember = false
+      if (!('autokick' in groups)) groups.autokick = false
     } else db.data.group[from] = {
       antinsfw: false,
-      onlymember: false
+      onlymember: false,
+      autokick: false
     }
 
     let users = db.data.users[sender]
@@ -209,6 +211,7 @@ module.exports = handler = async (m, conn, map) => {
 
     global.maxwarn = maxWarn
     global.lang = lang
+    global.oAdmin = isGroup ? isAdmin : false
 
     /**
      * Auto read 
