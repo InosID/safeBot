@@ -185,7 +185,6 @@ module.exports = handler = async (m, conn, map) => {
       if (!('autokick' in groups)) groups.autokick = false
       if (!('antitoxic' in groups)) groups.antitoxic = false
       if (!('language' in groups)) groups.language = 'english'
-
     } else db.data.group[from] = {
       antinsfw: false,
       onlymember: false,
