@@ -13,6 +13,7 @@ module.exports = async (msg, conn) => {
   let isMedia = isImage || isSticker
   let group = db.data.group[from]
   let warn = db.data.users[sender].warn
+  let isAutoKick = isGroup ? group.autokick : false
   if (isGroup && isAntiNSFW) {
     if (isMedia) {
       let imgURL = isMedia ? await webp2png(await msg.download()) : ''
@@ -34,6 +35,7 @@ module.exports = async (msg, conn) => {
             msg.reply(`Your warning has reached its maximum. see you later.`)
             require('delay')(2000)
             await conn.groupParticipantsUpdate(msg.from, [sender], "remove")
+            db.data.users[sender] = 0
           } else db.data.users[sender].warn += 1
         }
       } else console.log('Neutral')
