@@ -29,9 +29,9 @@ module.exports = async (msg, conn) => {
         await conn.sendMessage(msg.from, { delete: msg.key })
         require('delay')(2000) 
         conn.sendMessage(msg.from, { text: `@${msg.sender.split('@')[0]} You are not allowed to post ${typeNSFW} here`, mentions: [msg.sender] })
-        if (group.autokick && !isAdmin && warn >= maxwarn) {
+        if (group.autokick && !oAdmin && warn >= maxwarn) {
           msg.reply(`Your warning has reached its maximum. see you later.`)
-          require('delay')(2000)
+          require('delay')(3000)
           await conn.groupParticipantsUpdate(msg.from, [sender], "remove")
           db.data.users[sender] = 0
         }
