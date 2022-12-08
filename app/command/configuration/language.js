@@ -7,7 +7,7 @@ module.exports = {
   isAdmin: true,
   async run({ msg, conn }, { args }) {
     let { sender } = msg
-    let user = db.data.users[sender]
+    let user = db.data.group[sender]
     let languages = (args[0] || '').toLowerCase()
     switch(languages) {
       case "english":
