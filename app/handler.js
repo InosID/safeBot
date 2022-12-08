@@ -183,23 +183,26 @@ module.exports = handler = async (m, conn, map) => {
       if (!('antinsfw' in groups)) groups.antinsfw = false
       if (!('onlymember' in groups)) groups.onlymember = false
       if (!('autokick' in groups)) groups.autokick = false
+      if (!('antitoxic' in groups)) groups.antitoxic = false
+      if (!('language' in groups)) groups.language = 'english'
+
     } else db.data.group[from] = {
       antinsfw: false,
       onlymember: false,
-      autokick: false
+      autokick: false,
+      antitoxic: false,
+      language: 'english'
     }
 
     let users = db.data.users[sender]
     if (typeof users !== 'object') db.data.users[sender] = {}
     if (users) {
-      if (!('language' in users)) users.language = 'english'
       if (!('warn' in users)) users.warn = 0
     } else db.data.users[sender] = {
-      language: 'english',
       warn: 0
     }
 
-    let Lang = db.data.users[sender].language 
+    let Lang = db.data.group[sender].language 
     let lang 
     if (Lang == 'english') {
       lang = require('./language/english')
