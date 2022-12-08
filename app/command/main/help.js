@@ -2,6 +2,7 @@ module.exports = {
   name: "help",
   category: "main",
   alias: ["menu", "h"],
+  isGroup: true,
   async run({ msg, conn }, { map, args }) {
     const { pushName, sender } = msg
     const { prefix, command } = map
