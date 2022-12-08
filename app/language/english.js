@@ -52,3 +52,10 @@ exports.isConfig = (feature) => {
 exports.successConfig = (feature) => {
   return `Successfully changed to ${feature}`
 }
+
+exports.warnkick = () => {
+  return `Your warning has reached its maximum. see you later.`
+}
+exports.notAllowedNSFW = (type) => {
+  return `You are not allowed to post ${type} here`
+}
