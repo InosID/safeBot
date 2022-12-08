@@ -52,3 +52,10 @@ exports.isConfig = (feature) => {
 exports.successConfig = (feature) => {
   return `Berhasil diubah menjadi ${feature}`
 }
+
+exports.warnkick = () => {
+  return `Peringatan Anda telah mencapai maksimum. sampai ketemu lagi.`
+}
+exports.notAllowedNSFW = (type) => {
+  return `Anda tidak diizinkan memposting ${type} di sini`
+}
