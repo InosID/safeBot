@@ -185,12 +185,14 @@ module.exports = handler = async (m, conn, map) => {
       if (!('autokick' in groups)) groups.autokick = false
       if (!('antitoxic' in groups)) groups.antitoxic = false
       if (!('language' in groups)) groups.language = 'english'
+      if (!('toxiclist' in groups)) groups.toxiclist = []
     } else db.data.group[from] = {
       antinsfw: false,
       onlymember: false,
       autokick: false,
       antitoxic: false,
-      language: 'english'
+      language: 'english',
+      toxiclist: []
     }
 
     let users = db.data.users[sender]
