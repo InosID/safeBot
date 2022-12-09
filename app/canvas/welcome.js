@@ -103,6 +103,13 @@ class Welcomer {
     })
     return sizeOf(data.data)
   }
+
+  /** Method to render frame
+   * @param {Number} frame
+   */
+  async _renderFrame(frame) {
+    const canvas = Canvas.createCanvas(700, 250)
+  }
 }
 
 module.exports = Welcomer
