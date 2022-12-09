@@ -13,7 +13,7 @@ class Welcomer {
   constructor({
     background,
     name,
-    discriminator,
+    membercount,
     avatar,
     gif,
     layer,
@@ -23,7 +23,7 @@ class Welcomer {
   } = {}) {
     this.background = background || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPYmX5NwYe5IgH0Gq1XOOxxQXa7eSZ8gimVw&usqp=CAU'
     this.name ??= name
-    this.discriminator ??= discriminator
+    this.memberCount ??= membercount
     this.avatar ??= avatar
     this.gif ??= gif
     this.layer = layer || './assets/layer.png'
@@ -48,11 +48,11 @@ class Welcomer {
     return this
   }
 
-  /** Set discriminator of user
-   * @param {String} discriminator
+  /** Set member count of user
+   * @param {String} count
    */
-  setDiscriminator(discriminator) {
-    this.discriminator = discriminator
+  setMemberCount(membercount) {
+    this.memberCount = membercount
     return this
   }
 
@@ -61,6 +61,22 @@ class Welcomer {
    */
   setAvatar(avatar) {
     this.avatar = avatar
+    return this
+  }
+
+  /** Set if the background you want to use is a gif or not
+   * @param {Boolean} condition
+   */
+  setGIF(condition) {
+    this.gif = condition
+    return this
+  }
+
+  /** Set the blur value if don't then don't use it
+   * @param {Number} value
+   */
+  setBlur(value) {
+    this.blur = value
     return this
   }
 }
