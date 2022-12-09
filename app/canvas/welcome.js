@@ -20,7 +20,14 @@ class Welcomer {
     blur,
     delay,
     frame_limit
-  } = {}) {}
+  } = {}) {
+    this.background = background || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPYmX5NwYe5IgH0Gq1XOOxxQXa7eSZ8gimVw&usqp=CAU'
+    this.name ??= name
+    this.discriminator ??= discriminator
+    this.avatar ??= avatar
+    this.gif ??= gif
+    this.layer = layer || './assets/layer.png'
+  }
 }
 
 module.exports = Welcomer
