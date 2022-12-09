@@ -2,11 +2,11 @@ let sizeOf = require('image-size')
 let axios = require('axios')
 let Canvas = require('canvas')
 let jimp = require('jimp')
-let gifframes = require('gif-frames')
+let gifFrames = require('gif-frames')
 let GIFEncoder = require('gif-encoder-2')
 
 Canvas.registerFont(require('@canvas-fonts/arial-bold'), {
-  family: 'Arial-Bold'
+  family: 'Arial Bold'
 })
 
 class Welcomer {
@@ -142,7 +142,7 @@ class Welcomer {
 
     ctx.fillText(`${this.memberCount}`, 278, 162.5)
 
-    let avatar = jimp.read(this.avatar)
+    let avatar = await jimp.read(this.avatar)
 
     avatar.resize(1024, 1024).circle()
     avatar = await avatar.getBufferAsync('image/png')
