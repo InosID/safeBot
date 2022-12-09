@@ -109,6 +109,18 @@ class Welcomer {
    */
   async _renderFrame(frame) {
     const canvas = Canvas.createCanvas(700, 250)
+    const ctx = canvas.getContext('2d')
+
+    const scale = Math.max(canvas.width / frame.frameInfo.width, canvas.height / frame.frameInfo.height)
+    const x = (canvas.width / 2) - (frame.frameInfo.width / 2) * scale
+    const y = (canvas.height / 2) - (frame.frameInfo.height / 2) * scale
+
+    const layer = await Canvas.loadImage(this.layer)
+    let background = await jimp.read(frame.getImage()._obj)
+
+    if (this.blur) background.blur(this.blur)
+
+    background = await background.getBufferAsync('image/png')
   }
 }
 
