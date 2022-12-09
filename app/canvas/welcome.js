@@ -79,6 +79,30 @@ class Welcomer {
     this.blur = value
     return this
   }
+
+  /** Set delay between each frame
+   * @param {Number} delay
+   */
+  setDelay(delay) {
+    this.delay = delay
+  }
+
+  /** Set frame limit
+   * @param {Number} limit
+   */
+  setFrameLimit(limit) {
+    this.frame_limit = limit
+  }
+
+  /** Method to get image size from its url
+   * @param {String} url
+   */
+  async _getImageSize(url) {
+    const data = await axios.get(url, {
+      responseType: 'arraybuffer'
+    })
+    return sizeOf(data.data)
+  }
 }
 
 module.exports = Welcomer
