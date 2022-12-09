@@ -27,6 +27,41 @@ class Welcomer {
     this.avatar ??= avatar
     this.gif ??= gif
     this.layer = layer || './assets/layer.png'
+    this.blur ??= blur
+    this.delay = delay || 50
+    this.frame_limit = frame_limit || 30
+  }
+
+  /** Set background of the image (url)
+   * @param {String} background
+   */
+  setBackground(background) {
+    this.background = background
+    return this
+  }
+
+  /** Set user name
+   * @param {String} name
+   */
+  setName(name) {
+    this.name = name
+    return this
+  }
+
+  /** Set discriminator of user
+   * @param {String} discriminator
+   */
+  setDiscriminator(discriminator) {
+    this.discriminator = discriminator
+    return this
+  }
+
+  /** Set avatar of the user (url) + png
+   * @param {String} avatar
+   */
+  setAvatar(avatar) {
+    this.avatar = avatar
+    return this
   }
 }
 
