@@ -121,7 +121,40 @@ class Welcomer {
     if (this.blur) background.blur(this.blur)
 
     background = await background.getBufferAsync('image/png')
+
+    ctx.drawImage(await Canvas.loadImage(background), x, y, frame.frameInfo.width * scale, frame.frameInfo.height * scale)
+
+    ctx.strokeRect(0, 0, canvas.width, canvas.height)
+    ctx.drawImage(layer, 0, 0, canvas.width, canvas.height)
+
+    const name = this.name.length > 12 ? this.name.substring(0, 12) + '...' : this.name
+
+    ctx.font = 'bold 36px Arial Bold'
+    ctx.fillStyle = '#FFFFFF'
+    ctx.textAlign = 'start'
+    ctx.strokeStyle = '#f5f5f5'
+    ctx.fillText(`${name}`, 278, 113)
+
+    ctx.strokeText(`${name}`, 278, 113)
+
+    ctx.font = 'bold 25px Arial Bold'
+    ctx.fillStyle = '#FFFFFF'
+
+    ctx.fillText(`${this.memberCount}`, 278, 162.5)
+
+    let avatar = jimp.read(this.avatar)
+
+    avatar.resize(1024, 1024).circle()
+    avatar = await avatar.getBufferAsync('image/png')
+    avatar = await Canvas.loadImage(avatar)
+
+    ctx.drawImage(avatar, 72, 48, 150, 150)
+
+    return ctx
   }
+
+  /* Method to generate static image */
+  async _generateImage() {}
 }
 
 module.exports = Welcomer
