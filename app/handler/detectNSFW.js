@@ -29,13 +29,15 @@ module.exports = async (msg, conn) => {
         await conn.sendMessage(msg.from, { delete: msg.key })
         require('delay')(2000) 
         conn.sendMessage(msg.from, { text: `@${msg.sender.split('@')[0]} ` + lang.notAllowedNSFW(typeNSFW), mentions: [msg.sender] })
-        if (group.autokick && !oAdmin && warn >= maxwarn) {
-          msg.reply(lang.warnkick())
-          require('delay')(3000)
-          await conn.groupParticipantsUpdate(msg.from, [sender], "remove")
-          db.data.users[sender] = 0
+        if (group.autokick) {
+          db.data.users[sender].warn += 1
+          if (!oAdmin && warn >= maxwarn) {
+            msg.reply(lang.warnkick())
+            require('delay')(3000)
+            await conn.groupParticipantsUpdate(msg.from, [sender], "remove")
+            db.data.users[sender] = 0
+          }
         }
-        db.data.users[sender].warn += 1
       } else console.log('Neutral')
     }
   }
