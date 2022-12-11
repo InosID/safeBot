@@ -59,3 +59,6 @@ exports.warnkick = () => {
 exports.notAllowedNSFW = (type) => {
   return `You are not allowed to post ${type} here`
 }
+exports.detectedToxic = () => {
+  return `You are detected sending abusive words.`
+}
