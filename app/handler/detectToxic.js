@@ -11,7 +11,7 @@ module.exports = async (msg, conn) => {
     }
     if (confirm) {
       await conn.sendMessage(msg.from, { delete: msg.key })
-      conn.sendMessage(from, { text: `@${sender.split('@')[0]} ` + lang.detectedToxic, mentions: [sender] })
+      conn.sendMessage(from, { text: `@${sender.split('@')[0]} ` + lang.detectedToxic(), mentions: [sender] })
     }
   }
 }
