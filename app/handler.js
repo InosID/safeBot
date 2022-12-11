@@ -228,8 +228,10 @@ module.exports = handler = async (m, conn, map) => {
     memberOnly = isGroup ? db.data.group[from].onlymember : false
     if (memberOnly && !isAdmin) {
       require("./handler/detectNSFW")(msg, conn)
+      require("./handler/detectBadWord")(msg, conn)
     } else if (!memberOnly) {
       require("./handler/detectNSFW")(msg, conn)
+      require("./handler/detectBadWord")(msg, conn)
     }
     
     printLog(isCmd, sender, msg, body, groupName, isGroup)
