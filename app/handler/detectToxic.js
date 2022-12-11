@@ -3,8 +3,15 @@ module.exports = async (msg, conn) => {
   let isAntiToxic = isGroup ? db.data.group[from].antitoxic : false
   let toxicList = db.data.group[from].toxiclist
   if (isGroup && isAntiToxic) {
-    if (toxicList.some(v => body.includes(v))) {
-      console.log('Detected toxic')
+    let confirm = false
+    var i;
+    for (i = 0; i < toxicList.length; i++) {
+      if (body.toLowerCase().includes(toxicList[i].toLowerCase()))
+        confirm = true
+    }
+    if (confirm) {
+      await conn.sendMessage(msg.from, { delete: msg.key })
+      conn.sendMessage(from, { text: `@${sender.split('@')[0]} ` + lang.detectedToxic, mentions: [sender] })
     }
   }
 }
