@@ -59,3 +59,6 @@ exports.warnkick = () => {
 exports.notAllowedNSFW = (type) => {
   return `Anda tidak diizinkan memposting ${type} di sini`
 }
+exports.detectedToxic = () => {
+  return `Anda terdeteksi mengirimkan kata-kata kasar.`
+}
