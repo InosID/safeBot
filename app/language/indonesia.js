@@ -27,6 +27,9 @@ exports.featureDesc = (feature) => {
     case 'antinsfw':
       return `Sekarang 18+ foto dan stiker akan dihapus secara otomatis.`
     break
+    case 'antibadword':
+      return `Sekarang pesan kata buruk akan dihapus secara otomatis.`
+    break
   }
 }
 exports.featureActive = (feature, desc) => {
