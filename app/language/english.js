@@ -66,3 +66,6 @@ exports.detectedToxic = () => {
 exports.needText = (cmd) => {
   return `Where's the text?\nEx: ${cmd}`
 }
+exports.available = (text) => {
+  return `${text} is available`
+}
