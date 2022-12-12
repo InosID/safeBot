@@ -1,5 +1,11 @@
 <p align="center"><img src="https://repository-images.githubusercontent.com/573396373/cd95f58d-267f-42a0-aec7-c42850557bf3" width="235px"></p>
 
+<p align="center">
+  <a href="https://railway.app/new/template/z1nAN7">
+    <img src="https://railway.app/button.svg">
+  </a>
+</p>
+
 # SafeBot
 
 > A powerful moderation, security and utility bot, built to solve all your problems as a moderator.
