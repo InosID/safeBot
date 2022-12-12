@@ -26,7 +26,7 @@ module.exports = {
         } else msg.reply(lang.notAvailable(text))
       break
       case "reset":
-        delete badwordList
+        badwordList = []
         msg.reply(lang.done())
       break
     default:
