@@ -24,4 +24,4 @@
 ### Editing the File
 Edit the required value in `config.json`
 
-<p align="center"><img src="/.thumb/config-carbon.png" width="560"></p>
+<p align="center"><img src="/.thumb/config-carbon.png" width="850"></p>
