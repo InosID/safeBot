@@ -7,6 +7,7 @@
 - [Getting Started](#getting-started)
   - [Requirements](#requirements)
   - [Cloning Repo](#cloning-repo)
+  - [Editing the File](#editing-the-file)
 
 ## Getting Started
 
