@@ -24,4 +24,18 @@
 ### Editing the File
 Edit the required value in `config.json`
 
-<p align="center"><img src="/.thumb/config-carbon.png" width="850"></p>
+<p align="center">
+  <img src="/.thumb/config-carbon.png" width="850">
+</p>
+
+`botName`: Your bot name.
+
+`mongoURI`: MongoDB URI, You can get it here by creating account & cluster.
+
+`owner`: Your WhatsApp number.
+
+`thumbnail`: Image url for thumbnail.
+
+`groupWhatsApp`: Your WhatsApp group.
+
+`maxWarn`: Max warning for user.
