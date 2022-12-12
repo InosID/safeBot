@@ -23,7 +23,7 @@
 - [FFmpeg](https://www.gyan.dev/ffmpeg/builds)
 - Any text editor
 
-Having problems installing ffmpeg? [Click here](https://github.com/InosID/wiki/installing#ffmpeg)
+Having problems installing ffmpeg? [Click here](https://github.com/InosID/safeBot/wiki/installing#ffmpeg)
 
 ### Cloning Repo
 ```cmd
