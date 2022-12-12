@@ -69,3 +69,10 @@ exports.needText = (cmd) => {
 exports.available = (text) => {
   return `${text} is available`
 }
+
+exports.added = (text) => {
+  return `${text} has been added`
+}
+exports.removed = (text) => {
+  return `${text} has been removed`
+}
