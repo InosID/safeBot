@@ -62,3 +62,7 @@ exports.notAllowedNSFW = (type) => {
 exports.detectedToxic = () => {
   return `You are detected sending abusive words.`
 }
+
+exports.needText = (cmd) => {
+  return `Where's the text?\nEx: ${cmd}`
+}
