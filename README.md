@@ -6,6 +6,7 @@
 
 - [Getting Started](#getting-started)
   - [Requirements](#requirements)
+  - [Cloning Repo](#cloning-repo)
 
 ## Getting Started
 
@@ -14,3 +15,13 @@
 - [Git](https://git-scm.com/downloads)
 - [FFmpeg](https://www.gyan.dev/ffmpeg/builds)
 - Any text editor
+
+### Cloning Repo
+```cmd
+> git clone https://github.com/InosID/safeBot
+> cd safeBot
+```
+### Editing the File
+Edit the required value in `config.json`
+
+<p align="center"><img src="/.thumb/config-carbon.png" width="560"></p>
