@@ -62,3 +62,7 @@ exports.notAllowedNSFW = (type) => {
 exports.detectedToxic = () => {
   return `Anda terdeteksi mengirimkan kata-kata kasar.`
 }
+
+exports.needText = (cmd) => {
+  return `Dimana teksnya?\nContoh: ${cmd}`
+}
