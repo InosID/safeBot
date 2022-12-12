@@ -27,6 +27,9 @@ exports.featureDesc = (feature) => {
     case 'antinsfw':
       return `Now 18+ photos and stickers will be automatically removed.`
     break
+    case 'antibadword':
+      return `Now bad word message will be automatically removed.`
+    break
   }
 }
 exports.featureActive = (feature, desc) => {
