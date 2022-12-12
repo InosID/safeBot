@@ -66,3 +66,6 @@ exports.detectedToxic = () => {
 exports.needText = (cmd) => {
   return `Dimana teksnya?\nContoh: ${cmd}`
 }
+exports.available = (text) => {
+  return `${text} tersedia`
+}
