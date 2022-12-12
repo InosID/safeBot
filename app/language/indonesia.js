@@ -69,3 +69,12 @@ exports.needText = (cmd) => {
 exports.available = (text) => {
   return `${text} tersedia`
 }
+exports.added = (text) => {
+  return `${text} telah ditambahkan`
+}
+exports.removed = (text) => {
+  return `${teks} telah dihapus`
+}
+exports.notAvailable = (text) => {
+  return `${text} tidak tersedia`
+}
