@@ -76,3 +76,7 @@ exports.added = (text) => {
 exports.removed = (text) => {
   return `${text} has been removed`
 }
+
+exports.notAvailable = (text) => {
+  return `${text} not available`
+}
