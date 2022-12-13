@@ -48,3 +48,9 @@ Edit the required value in `config.json`
 `groupWhatsApp`: Your WhatsApp group.
 
 `maxWarn`: Max warning for user.
+
+## Feature
+
+<p align="left"><img src="https://raw.githubusercontent.com/InosID/safeBot/main/.thumb/SafeBot.png" width="300px">
+
+[Other](https://github.com/InosID/safeBot/wiki/feature)
